@@ -1,0 +1,54 @@
+alexp@LAPTOP-JL613ULH MINGW64 ~
+$ cd Downloads
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ tar -xvzf log.tar.gz
+log.csv
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ grep -w education log.csv
+40.77.167.ifh,2017-06-27,07:03:14,0.0,1302343.0,0000869311-17-000385,education.realty.trust..txt,200.0,5145.0,0.0,0.0,0.0,10.0,0.0,
+180.165.168.jeh,2017-06-27,12:45:47,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,4925.0,0.0,0.0,0.0,10.0,0.0,
+199.192.67.ihd,2017-06-27,13:15:16,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,11588.0,0.0,0.0,0.0,10.0,0.0,
+117.136.0.cca,2017-06-27,13:38:10,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,4925.0,0.0,0.0,0.0,10.0,0.0,
+156.33.118.eja,2017-06-27,14:37:56,0.0,929887.0,0000215457-17-002148,apollo.education.gro.txt,200.0,5094.0,0.0,0.0,0.0,9.0,0.0,
+199.192.67.ihd,2017-06-27,17:35:04,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,11588.0,0.0,0.0,0.0,10.0,0.0,
+58.177.7.fad,2017-06-27,23:54:52,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,4931.0,0.0,0.0,0.0,10.0,0.0,
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ # in a different shell i previously piped through a wc -l to find 92 that had education in it. Also I know have the one file 'education.realty.trust.txt' that I was looking for.
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ #I need to place that file into a new file, but only that one particular one, due to it fitting the description.
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ grep -w education realty trust log.csv
+grep: realty: No such file or directory
+grep: trust: No such file or directory
+log.csv:40.77.167.ifh,2017-06-27,07:03:14,0.0,1302343.0,0000869311-17-000385,education.realty.trust..txt,200.0,5145.0,0.0,0.0,0.0,10.0,0.0,
+log.csv:180.165.168.jeh,2017-06-27,12:45:47,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,4925.0,0.0,0.0,0.0,10.0,0.0,
+log.csv:199.192.67.ihd,2017-06-27,13:15:16,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,11588.0,0.0,0.0,0.0,10.0,0.0,
+log.csv:117.136.0.cca,2017-06-27,13:38:10,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,4925.0,0.0,0.0,0.0,10.0,0.0,
+log.csv:156.33.118.eja,2017-06-27,14:37:56,0.0,929887.0,0000215457-17-002148,apollo.education.gro.txt,200.0,5094.0,0.0,0.0,0.0,9.0,0.0,
+log.csv:199.192.67.ihd,2017-06-27,17:35:04,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,11588.0,0.0,0.0,0.0,10.0,0.0,
+log.csv:58.177.7.fad,2017-06-27,23:54:52,0.0,1364742.0,0000215457-17-003221,tal.education.group..txt,200.0,4931.0,0.0,0.0,0.0,10.0,0.0,
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ grep -w 'education.realty.trust' log.csv
+40.77.167.ifh,2017-06-27,07:03:14,0.0,1302343.0,0000869311-17-000385,education.realty.trust..txt,200.0,5145.0,0.0,0.0,0.0,10.0,0.0,
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ grep -w 'education [a-z] [a-z]' log.csv
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ grep -w 'education [a-z]*[a-z]*' log.csv
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ # i was checking for any other files that had education something something in the file name. I did not find one.
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ grep -w 'education.realty.trust' log.csv > educationsomethingsomething.txt
+
+alexp@LAPTOP-JL613ULH MINGW64 ~/Downloads
+$ head educationsomethingsomething.txt
+40.77.167.ifh,2017-06-27,07:03:14,0.0,1302343.0,0000869311-17-000385,education.realty.trust..txt,200.0,5145.0,0.0,0.0,0.0,10.0,0.0,
